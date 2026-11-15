@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title data-i18n="feed.meta.title">Ofertas de Jogos — Pega O Desconto</title>
+  <meta name="description" data-i18n-content="feed.meta.desc" content="Atalhos para as páginas de descontos das principais lojas de jogos: Nuuvem, Fanatical, Green Man Gaming, GamersGate, Eneba, Amazon e Cuponomia." />
+  <link rel="canonical" href="https://pegaodesconto.x-os.org/ofertas.html" />
+  <meta name="theme-color" content="#050506" />
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png" />
+  <link rel="stylesheet" href="css/style.css" />
+  <script src="js/i18n.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#conteudo" data-i18n="skip">Pular para o conteúdo</a>
+
+  <header class="site-header">
+    <div class="shell nav">
+      <a class="brand" href="./">
+        <img src="assets/icon-512.png" alt="" width="28" height="28" />
+        <span data-i18n="brand">Pega O Desconto</span>
+      </a>
+      <button class="nav-toggle" aria-label="Abrir menu" data-i18n-aria="nav.aria.open" aria-expanded="false" aria-controls="menu">
+        <span class="nav-toggle-ico"><i></i><i></i></span>
+        <span class="nav-toggle-text">Menu</span>
+        <span class="nav-toggle-plus" aria-hidden="true">+</span>
+      </button>
+      <nav class="nav-links" id="menu" aria-label="Navegação principal" data-i18n-aria="nav.label">
+        <a href="./#recursos" data-idx="01" data-i18n="nav.features">Recursos</a>
+        <a href="ofertas.html" class="is-current" data-idx="02" data-i18n="nav.deals">Ofertas</a>
+        <a href="./#como-funciona" data-idx="03" data-i18n="nav.how">Como funciona</a>
+        <a href="./#faq" data-idx="04" data-i18n="nav.faq">FAQ</a>
+        <a href="privacidade.html" data-idx="05" data-i18n="nav.privacy">Privacidade</a>
+        <div class="lang" role="group" aria-label="Idioma" data-i18n-aria="lang.label">
+          <button type="button" data-lang-btn="pt" lang="pt-BR" aria-pressed="true">PT</button>
+          <span class="lang-sep" aria-hidden="true">_/_</span>
+          <button type="button" data-lang-btn="en" lang="en" aria-pressed="false">EN</button>
+        </div>
+        <a class="nav-cta" data-cws href="https://chromewebstore.google.com/detail/pega-o-desconto/nkjhgolgbhlejnagekgpfadmhadejgfm"><span data-i18n="nav.cta">Adicionar ao Chrome</span> <span class="orb" aria-hidden="true">&#8599;</span></a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="conteudo">
+    <section class="page-head">
+      <div class="shell">
+        <p class="kicker"><span class="rule"></span><span data-i18n="feed.kicker">Feed de ofertas</span></p>
+        <h1 data-i18n="feed.title">Ofertas de Jogos</h1>
+        <p class="page-lead" data-i18n="feed.lead">Atalhos para as páginas de descontos das principais lojas de jogos. Escolha uma loja para ver as promoções do momento.</p>
+      </div>
+    </section>
+
+    <section class="feed">
+      <div class="shell">
+        <div class="feed-controls">
+          <div class="search"><input id="q" type="search" placeholder="Buscar loja (ex.: Nuuvem, Eneba)" data-i18n-placeholder="feed.search.ph" aria-label="Buscar loja" data-i18n-aria="feed.search.aria" /></div>
+        </div>
+        <div class="chips" id="chips" aria-label="Filtrar por categoria" data-i18n-aria="feed.filters.aria"></div>
+        <div id="status" class="feed-status" role="status" aria-live="polite" data-i18n="feed.loading">Carregando ofertas…</div>
+        <div id="grid" class="deals-grid" aria-live="polite"></div>
+        <p id="foot" class="feed-foot"></p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="shell">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <a class="brand" href="./">
+            <img src="assets/icon-512.png" alt="" width="28" height="28" />
+            <span data-i18n="brand">Pega O Desconto</span>
+          </a>
+          <p data-i18n="footer.about">Cupons, promoções, cashback e o melhor preço enquanto você compra — direto no navegador.</p>
+        </div>
+        <div class="footer-col">
+          <p class="footer-label" data-i18n="footer.browse">Navegar</p>
+          <a href="./" data-i18n="footer.home">Início</a>
+          <a href="./#recursos" data-i18n="nav.features">Recursos</a>
+          <a href="./#faq" data-i18n="nav.faq">FAQ</a>
+        </div>
+        <div class="footer-col">
+          <p class="footer-label" data-i18n="footer.company">Institucional</p>
+          <a href="privacidade.html" data-i18n="footer.privacy">Privacidade</a>
+          <a href="termos.html" data-i18n="footer.terms">Termos</a>
+          <a data-cws href="https://chromewebstore.google.com/detail/pega-o-desconto/nkjhgolgbhlejnagekgpfadmhadejgfm">Chrome Web Store</a>
+        </div>
+      </div>
+
+      <div class="footer-note">
+        <span>© <span id="ano">2026</span> <span data-i18n="brand">Pega O Desconto</span>.</span>
+        <span data-i18n="footer.trademarks">As marcas e lojas citadas pertencem aos seus respectivos donos.</span>
+      </div>
+
+      <p class="footer-word" aria-hidden="true" data-i18n="footer.word.deals">OFERTAS</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/ofertas.js"></script>
+  <script src="js/motion.js"></script>
+</body>
+</html>

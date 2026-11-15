@@ -1,0 +1,71 @@
+{
+  "version": 1,
+  "updated": "2026-11-11",
+  "note": "Fonte de dados do feed de ofertas de jogos. Cada item de 'stores' aponta para a página oficial de ofertas/descontos da loja. O array 'deals' (opcional) permite ofertas específicas quando houver integração de afiliados/API.",
+  "stores": [
+    {
+      "id": "nuuvem",
+      "name": "Nuuvem",
+      "domain": "nuuvem.com",
+      "kind": "Loja de jogos (Brasil)",
+      "url": "https://www.nuuvem.com/",
+      "accent": "#6d28d9",
+      "tags": ["Brasil", "Loja", "Steam"]
+    },
+    {
+      "id": "fanatical",
+      "name": "Fanatical",
+      "domain": "fanatical.com",
+      "kind": "Chaves oficiais (Steam/Windows)",
+      "url": "https://www.fanatical.com/en/deals",
+      "accent": "#7c3aed",
+      "tags": ["Internacional", "Chaves"]
+    },
+    {
+      "id": "greenmangaming",
+      "name": "Green Man Gaming",
+      "domain": "greenmangaming.com",
+      "kind": "Chaves e lançamentos",
+      "url": "https://www.greenmangaming.com/",
+      "accent": "#4f46e5",
+      "tags": ["Internacional", "Chaves"]
+    },
+    {
+      "id": "gamersgate",
+      "name": "GamersGate",
+      "domain": "gamersgate.com",
+      "kind": "Loja de jogos digitais",
+      "url": "https://www.gamersgate.com/",
+      "accent": "#5b21b6",
+      "tags": ["Internacional", "Loja"]
+    },
+    {
+      "id": "eneba",
+      "name": "Eneba",
+      "domain": "eneba.com",
+      "kind": "Marketplace de chaves",
+      "url": "https://www.eneba.com/",
+      "accent": "#8b5cf6",
+      "tags": ["Internacional", "Marketplace"]
+    },
+    {
+      "id": "amazon",
+      "name": "Amazon Brasil",
+      "domain": "amazon.com.br",
+      "kind": "Ofertas e games",
+      "url": "https://www.amazon.com.br/ofertas",
+      "accent": "#0ea5e9",
+      "tags": ["Brasil", "Loja"]
+    },
+    {
+      "id": "cuponomia",
+      "name": "Cuponomia",
+      "domain": "cuponomia.com.br",
+      "kind": "Agregador de cupons",
+      "url": "https://www.cuponomia.com.br/",
+      "accent": "#a78bfa",
+      "tags": ["Brasil", "Cupons"]
+    }
+  ],
+  "deals": []
+}

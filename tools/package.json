@@ -1,0 +1,17 @@
+{
+  "name": "pega-o-desconto-landing-tools",
+  "version": "1.1.0",
+  "private": true,
+  "description": "Validation and packaging tools for the Pega O Desconto landing page",
+  "scripts": {
+    "serve": "node serve.js",
+    "check": "node check-landing.js",
+    "test": "node check-landing.js",
+    "check:i18n": "node check-i18n.js",
+    "check:motion": "node check-motion.js",
+    "zip": "node zip.js"
+  },
+  "dependencies": {
+    "jszip": "^3.10.1"
+  }
+}

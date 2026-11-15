@@ -1,0 +1,41 @@
+name: Translation improvement
+description: Fix or improve PT-BR or English copy
+title: "[i18n] "
+labels: ["good first issue", "i18n"]
+body:
+  - type: dropdown
+    id: language
+    attributes:
+      label: Language
+      options:
+        - Português
+        - English
+    validations:
+      required: true
+  - type: input
+    id: page
+    attributes:
+      label: Page and section
+      placeholder: index.html — hero
+    validations:
+      required: true
+  - type: textarea
+    id: current
+    attributes:
+      label: Current text
+    validations:
+      required: true
+  - type: textarea
+    id: suggested
+    attributes:
+      label: Suggested text
+      description: Keep legal statements factually identical; only the wording may change.
+    validations:
+      required: true
+  - type: checkboxes
+    id: run
+    attributes:
+      label: Checks
+      options:
+        - label: I ran `npm run check:i18n --prefix tools` after the change (or will in the PR)
+          required: false

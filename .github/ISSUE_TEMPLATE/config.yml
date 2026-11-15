@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Live site
+    url: https://pegaodesconto.x-os.org
+    about: Check whether the issue also happens in production before reporting.
+  - name: Security report
+    url: mailto:dev@x-os.org
+    about: Report vulnerabilities privately by email. Do not open a public issue.

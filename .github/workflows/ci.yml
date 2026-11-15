@@ -1,0 +1,42 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    name: Validate site
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: tools/package-lock.json
+
+      - name: Install tools
+        run: npm ci --prefix tools
+
+      - name: Static checks
+        run: npm test --prefix tools
+
+      - name: Bilingual UI checks
+        run: npm run check:i18n --prefix tools
+
+      - name: Motion and parallax checks
+        run: npm run check:motion --prefix tools
+
+      - name: Upload screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: screenshots
+          path: dist/screenshots
+          retention-days: 7

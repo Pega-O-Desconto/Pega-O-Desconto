@@ -1,0 +1,56 @@
+name: Bug report
+description: Something is broken or looks wrong on the site
+title: "[bug] "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for the report. Please check the browser console and include the exact URL — it makes a fix much faster.
+  - type: input
+    id: url
+    attributes:
+      label: Page URL
+      placeholder: https://pegaodesconto.x-os.org/ofertas.html
+    validations:
+      required: true
+  - type: dropdown
+    id: language
+    attributes:
+      label: Language
+      options:
+        - Português
+        - English
+    validations:
+      required: true
+  - type: input
+    id: environment
+    attributes:
+      label: Browser and version
+      placeholder: Chrome 142 on Windows 11
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1. Open the deals page
+        2. Filter by store
+        3. ...
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected vs actual
+      placeholder: Expected the filter to stay selected; it resets after scrolling.
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Screenshot or console output
+      description: Drag an image here or paste any relevant errors.
+    validations:
+      required: false

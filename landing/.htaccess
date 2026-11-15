@@ -1,0 +1,13 @@
+RewriteEngine On
+RewriteCond %{HTTPS} !=on
+RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# URLs públicas usadas pela extensão
+RewriteRule ^politica-de-privacidade/?$ privacidade.html [L]
+RewriteRule ^termos-e-condicoes/?$ termos.html [L]
+
+<IfModule mod_headers.c>
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set Strict-Transport-Security "max-age=31536000"
+</IfModule>
