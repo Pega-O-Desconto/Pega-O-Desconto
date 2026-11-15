@@ -5,8 +5,8 @@ Thanks for helping. This project is intentionally small and dependency-free, so 
 ## Setup
 
 ```bash
-git clone https://github.com/jonypeixoto/landing.git
-cd landing
+git clone https://github.com/Pega-O-Desconto/Pega-O-Desconto.git
+cd Pega-O-Desconto
 npm ci --prefix tools
 npm run serve --prefix tools
 ```

@@ -1,6 +1,6 @@
 # Pega O Desconto — landing page
 
-[![CI](https://github.com/jonypeixoto/landing/actions/workflows/ci.yml/badge.svg)](https://github.com/jonypeixoto/landing/actions/workflows/ci.yml)
+[![CI](https://github.com/Pega-O-Desconto/Pega-O-Desconto/actions/workflows/ci.yml/badge.svg)](https://github.com/Pega-O-Desconto/Pega-O-Desconto/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/license-MIT-6d5bd0.svg)](LICENSE)
 [![PRs welcome](https://img.shields.io/badge/PRs-welcome-22c55e.svg)](CONTRIBUTING.md)
 
@@ -28,8 +28,8 @@ Site estático da extensão Pega O Desconto: HTML/CSS/JS puro, bilíngue (PT/EN)
 ## Quick start
 
 ```bash
-git clone https://github.com/jonypeixoto/landing.git
-cd landing
+git clone https://github.com/Pega-O-Desconto/Pega-O-Desconto.git
+cd Pega-O-Desconto
 npm ci --prefix tools
 npm run serve --prefix tools
 ```
@@ -100,7 +100,7 @@ Upload `dist/pegaodesconto-landing.zip` to any static host with `.htaccess` supp
 
 Issues and pull requests are welcome — translations, accessibility fixes, copy improvements and new curated deal sources especially. Start with [CONTRIBUTING.md](CONTRIBUTING.md) and look for the `good first issue` label.
 
-- Report a bug: [new issue](https://github.com/jonypeixoto/landing/issues/new/choose)
+- Report a bug: [new issue](https://github.com/Pega-O-Desconto/Pega-O-Desconto/issues/new/choose)
 - Security report: see [SECURITY.md](SECURITY.md)
 - Community standards: [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md)
 
