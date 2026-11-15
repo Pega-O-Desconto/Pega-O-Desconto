@@ -121,6 +121,22 @@ async function scrollTo(cdp, selector, wait = 1700) {
   await sleep(wait);
 }
 
+// Scrolls to a section and polls until the reveal predicate holds. Fixed sleeps
+// are not enough on slow CI runners, where letter transitions finish late.
+async function revealAfterScroll(cdp, selector, predicate, timeout = 10000) {
+  await scrollTo(cdp, selector, 700);
+  return waitFor(() => cdp.eval(predicate), timeout);
+}
+
+function visibleChars(selector) {
+  return `(() => {
+    const el = document.querySelector(${JSON.stringify(selector)});
+    if (!el) return false;
+    const chars = [...el.querySelectorAll('.ch')];
+    return el.classList.contains('in') && chars.length > 0 && chars.every((c) => parseFloat(getComputedStyle(c).opacity) > 0.99);
+  })()`;
+}
+
 async function close(b) {
   killTree(b.child);
   await sleep(600);
@@ -187,6 +203,7 @@ async function close(b) {
 
     console.log('\nScroll: letras entrando e parallax');
     await scrollTo(p, '#recursos');
+    await waitFor(() => p.eval(`document.querySelector('#recursos h2').classList.contains('in')`), 6000);
     const rec = await p.eval(`(() => {
       const h2 = document.querySelector('#recursos h2');
       return {
@@ -213,14 +230,14 @@ async function close(b) {
     check(rec.heroImg !== 'none', 'imagem do hero também em parallax', rec.heroImg);
     await shot(p, path.join(OUT, 'desk-recursos.jpg'));
 
-    await scrollTo(p, '.scene-band');
+    const bandReady = await revealAfterScroll(p, '.scene-band', visibleChars('.scene-word'));
     const band = await p.eval(`(() => {
       const img = document.querySelector('.scene-band img');
       const word = document.querySelector('.scene-word');
-      return { tf: getComputedStyle(img).transform, wordIn: word.classList.contains('in'), chars: [...word.querySelectorAll('.ch')].every((c) => getComputedStyle(c).opacity === '1') };
+      return { tf: getComputedStyle(img).transform, wordIn: word.classList.contains('in'), chars: [...word.querySelectorAll('.ch')].every((c) => parseFloat(getComputedStyle(c).opacity) > 0.99) };
     })()`);
     check(band.tf !== 'none', 'imagem da cena com parallax', band.tf);
-    check(band.wordIn && band.chars, 'palavra da cena revelada em letras');
+    check(bandReady, 'palavra da cena revelada em letras', JSON.stringify(band));
     await shot(p, path.join(OUT, 'desk-scene.jpg'));
 
     await scrollTo(p, 'section.cta');
@@ -246,14 +263,13 @@ async function close(b) {
     await sleep(300);
     await p.eval(`document.querySelector('[data-lang-btn="en"]').click()`);
     await sleep(600);
-    await scrollTo(p, '#recursos', 1500);
+    const enReady = await revealAfterScroll(p, '#recursos', visibleChars('#recursos h2'));
     const en = await p.eval(`(() => {
       const h2 = document.querySelector('#recursos h2');
       return {
         text: h2.textContent,
         split: h2.classList.contains('split-chars'),
         chars: h2.querySelectorAll('.ch').length,
-        visible: h2.classList.contains('in') && [...h2.querySelectorAll('.ch')].every((c) => getComputedStyle(c).opacity === '1'),
         h1: document.querySelector('.hero h1').textContent.trim(),
         h1Split: document.querySelector('.hero h1').classList.contains('split-chars'),
         h1Chars: document.querySelectorAll('.hero h1 .ch').length,
@@ -262,21 +278,19 @@ async function close(b) {
     })()`);
     check(en.text === 'Everything to pay less, effortlessly', 'h2 em inglês após troca', en.text);
     check(en.split && en.chars >= 24, 'h2 inglês redividido em letras', String(en.chars));
-    check(en.visible, 'letras em inglês visíveis');
+    check(enReady, 'letras em inglês visíveis');
     check(en.h1 === 'Get The Discount' && en.violet === 'Discount', 'marca vira Get The Discount', en.h1);
     check(en.h1Split && en.h1Chars >= 14, 'h1 inglês redividido em letras', String(en.h1Chars));
 
     console.log('\nCelular');
     const m = await newPage(b, base + '/index.html?lang=pt', 390, 844);
-    await scrollTo(m, '#pontos', 1700);
+    const mobReady = await revealAfterScroll(m, '#pontos', visibleChars('#pontos h2'));
     const mob = await m.eval(`(() => ({
       overflow: document.documentElement.scrollWidth - window.innerWidth,
-      pointed: document.querySelector('#pontos h2').classList.contains('in'),
-      chars: [...document.querySelectorAll('#pontos h2 .ch')].every((c) => getComputedStyle(c).opacity === '1'),
       blob: getComputedStyle(document.querySelector('.aurora__blob')).filter
     }))()`);
     check(mob.overflow <= 1, 'sem overflow horizontal no celular', String(mob.overflow));
-    check(mob.pointed && mob.chars, 'h2 visível no celular');
+    check(mobReady, 'h2 visível no celular');
     check(/blur/.test(mob.blob), 'gradiente com blur reduzido', mob.blob);
     await shot(m, path.join(OUT, 'mob-pontos.jpg'));
 
