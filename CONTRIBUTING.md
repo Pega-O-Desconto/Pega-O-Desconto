@@ -5,7 +5,7 @@ Thanks for helping. This project is intentionally small and dependency-free, so 
 ## Setup
 
 ```bash
-git clone https://github.com/pega-o-desconto/landing.git
+git clone https://github.com/jonypeixoto/landing.git
 cd landing
 npm ci --prefix tools
 npm run serve --prefix tools
